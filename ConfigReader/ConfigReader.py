@@ -7,8 +7,10 @@ class ConfigReader:
 
     def __init__( self ):
         self.m_oData = {}
-        self.m_sWIFI_SSID = b''
-        self.m_sWIFI_Password = b''
+        self.m_sWIFI_SSID = ''
+        self.m_sWIFI_Password = ''
+        self.m_sServer_IP = ''
+        self.m_sServer_Port = ''
 
     def init( self ):
         if ConfigReader.CONFIG_PATH not in uos.listdir():
@@ -20,6 +22,8 @@ class ConfigReader:
         try:
             self.m_sWIFI_SSID = self.m_oData["Wifi"]["SSID"]
             self.m_sWIFI_Password = self.m_oData["Wifi"]["Password"]
+            self.m_sServer_IP = self.m_oData["Server"]["IP"]
+            self.m_sServer_Port = self.m_oData["Server"]["Port"]
         except KeyError as oError:
             print(str(oError))
             raise oError
@@ -30,3 +34,6 @@ class ConfigReader:
 
     def GetWifiConfig( self ):
         return ( self.m_sWIFI_SSID, self.m_sWIFI_Password )
+
+    def GetServerConfig( self ):
+        return ( self.m_sServer_IP, self.m_sServer_Port )

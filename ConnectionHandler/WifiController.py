@@ -3,6 +3,8 @@ import utime
 
 class WifiController:
 
+    TIMEOUT = const( 10000 )
+
     def __init__( self ):
         pass
 
@@ -11,7 +13,7 @@ class WifiController:
         self.m_oConnection.active(True)
         return self.m_oConnection.active()
 
-    def ConnectToWifi( self, sSSID, sPassword, nTimeout = 10000 ):
+    def ConnectToWifi( self, sSSID, sPassword ):
         self.m_oConnection.connect( sSSID, sPassword )
 
         nStartTime = utime.ticks_ms()
@@ -21,7 +23,7 @@ class WifiController:
             if bIsConnected is True:
                 break
             # has the timeout elapsed?
-            if utime.ticks_ms() - nStartTime > abs(nTimeout - 10):
+            if utime.ticks_ms() - nStartTime > abs(WifiController.TIMEOUT - 10):
                 break
             else:
                 utime.sleep_ms(10)

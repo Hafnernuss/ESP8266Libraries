@@ -5,9 +5,9 @@ class ServerController:
     def __init__( self ):
         pass
 
-    def init( self ):
+    def init( self, sIP, sPort ):
         try:
-            oRequest = urequests.get( "http://10.0.0.20:5000" )
+            oRequest = urequests.get( sIP + ":" + sPort )
         except OSError as oException:
             return False
 
