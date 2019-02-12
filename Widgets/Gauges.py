@@ -1,5 +1,5 @@
-from Libraries.ST7735 import Display
-from Libraries.ST7735 import Fonts
+from ESP8266Libraries.ST7735 import Display
+from ESP8266Libraries.ST7735 import Fonts
 import math
 
 class Thermometer():

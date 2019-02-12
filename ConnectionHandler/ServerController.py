@@ -6,8 +6,10 @@ class ServerController:
         pass
 
     def init( self ):
-        oRequest = urequests.get( "http://10.0.0.20:5000" )
-        print( oRequest.text )
+        try:
+            oRequest = urequests.get( "http://10.0.0.20:5000" )
+        except OSError as oException:
+            return False
 
         if oRequest.text == "Hello, World!":
             return True

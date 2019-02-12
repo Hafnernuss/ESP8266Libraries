@@ -1,5 +1,5 @@
-from Libraries.ST7735 import Display
-from Libraries.ST7735 import Fonts
+from ESP8266Libraries.ST7735 import Display
+from ESP8266Libraries.ST7735 import Fonts
 import math
 
 class TFTStatusLogger():
@@ -20,6 +20,6 @@ class TFTStatusLogger():
         if bResult:
             self.m_oTFT.Text( 90, self.m_oYPos, "[OK]", Fonts.terminalfont, Display.COLOR_GREEN, 1 )
         else:
-            oTFT.Text( 90, self.m_oYPos, "[NOK]", Fonts.terminalfont, Display.COLOR_RED, 1 )
+            self.m_oTFT.Text( 90, self.m_oYPos, "[NOK]", Fonts.terminalfont, Display.COLOR_RED, 1 )
 
         self.m_oYPos += 10
